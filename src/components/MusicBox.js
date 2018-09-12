@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './MusicPlay.css'
+import './MusicBox.css';
 
-export default class MusicPlay extends Component {
+export default class MusicBox  extends Component {
   render() {
     return (
       <div className="music-box">
-       
+     
       </div>
     );
   }
