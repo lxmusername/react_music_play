@@ -14,7 +14,7 @@ export default class Player extends Component {
         this.state = {
             progress: 0,//播放进度
             volume: 0,//音量 
-            isPlay:false,//是否正在播放
+            isPlay:true,//是否正在播放
         }
         this.play=this.play.bind(this);
     }
