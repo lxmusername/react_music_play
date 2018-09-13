@@ -4,12 +4,16 @@
   background: rgb(28, 85, 122);
   margin: 50px auto;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .music-head{
   color: #999;
   font-size: 1.5rem;
-  padding: 10px 20px;
   background: #eee;
+  padding: 0 20px;
+  height: 60px;
+  line-height: 60px;
 }
 .music-head img{
   width: 30px;
@@ -17,5 +21,6 @@
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 20px;
-  border: 1px solid rgb(184, 10, 10);
+  border: 2px solid rgb(10, 135, 184);
 }
+
