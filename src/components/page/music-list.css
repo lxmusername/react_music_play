@@ -1,0 +1,19 @@
+ul{
+    list-style: none;
+    padding: 0 20px;
+}
+
+li{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dashed #eee;
+    padding: 0 10px;
+}
+li .item-del{
+    float: right;
+    cursor: pointer;
+    color: #b90a0a;
+}
+.active-item{
+    color: #b9230a;
+}

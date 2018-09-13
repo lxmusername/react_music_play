@@ -12,9 +12,11 @@ export default class Player extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            progress: 0,
-            volumn: 0,
+            progress: 0,//播放进度
+            volume: 0,//音量 
+            isPlay:false,//是否正在播放
         }
+        this.play=this.play.bind(this);
     }
     componentDidMount() {
         $('#player').bind($.jPlayer.event.timeupdate, (e) => {
@@ -37,6 +39,14 @@ export default class Player extends Component {
     changeVolumn(curProgress) {
         console.log('volume:',curProgress)
         $('#player').jPlayer('volume',curProgress);
+    }
+    // 是否播放
+    play(){
+        this.state.isPlay&&$('#player').jPlayer('pause');
+        !this.state.isPlay&&$('#player').jPlayer('play');
+        this.setState({
+            isPlay:!this.state.isPlay
+        })
     }
     render() {
         return (
@@ -69,11 +79,11 @@ export default class Player extends Component {
                         changeProgress={this.changeProgress} />
                 </div>
                 <div className='player-controller'>
-                    <span> &lt;</span>
-                    <span> || </span>
-                    <span> &gt;</span>
+                    <span></span>
+                    <span className={this.state.isPlay?'pause-btn':'begin-btn'} onClick={this.play}></span>
+                    <span></span>
+                   <img src={require('../../assets/images/round.png')}/>
                 </div>
-
             </div>
         );
     }

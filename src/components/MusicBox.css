@@ -6,6 +6,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 10px #666;
 }
 .music-head{
   color: #999;

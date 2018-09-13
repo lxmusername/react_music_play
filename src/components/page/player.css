@@ -2,6 +2,7 @@
     padding: 20px 40px;
     font-family:Microsoft yahei;
     color: #666;
+    user-select: none;
 }
 
 
@@ -59,5 +60,42 @@
     font-size: 0.2rem;
     color: #f1f1f1;
   }
+  .player-controller{
+    padding: 20px 0;
+  }  
+  .player-controller>span{
+      margin: 0 10px;
+      color: #0a8080;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+  }
+  .player-controller>span:hover{
+      cursor: pointer;
+      color: #1be9e9!important;
+  }
+  .player-controller>span:nth-of-type(1){
+      background: url('../../assets/images/pre.png')  no-repeat center;
+      background-size: contain;
+  }
+  span.begin-btn{
+    background: url('../../assets/images/begin.png') no-repeat center;
+    background-size: contain;
+}
+span.pause-btn{
+    background: url('../../assets/images/pause.png') no-repeat center;
+    background-size: contain;
+}
+.player-controller>span:nth-of-type(3){
+    background: url('../../assets/images/next.png') no-repeat center;
+    background-size: contain;
+}
+.player-controller img{
+    float: right;
+    width: 24px;
+}
+.player-controller img:hover{
+    cursor: pointer;
+}
 
   
