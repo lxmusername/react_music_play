@@ -3,5 +3,19 @@
   height: 500px;
   background: rgb(28, 85, 122);
   margin: 50px auto;
-  border-radius: 20px;
+  overflow: hidden;
+}
+.music-head{
+  color: #999;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  background: #eee;
+}
+.music-head img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 20px;
+  border: 1px solid rgb(184, 10, 10);
 }
