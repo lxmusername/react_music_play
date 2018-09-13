@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import './MusicBox.css';
 import MusicHead from './page/header';
 import Player from './page/player';
-const $=window.$;
+import { MUSIC_LIST } from '../assets/music/music-list'
 
-
+const $ = window.$;
 export default class MusicBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      musicItem: MUSIC_LIST[0],
+    }
+  }
   componentDidMount() {
     //初始化 jplayer插件
     $('#player').jPlayer({
@@ -23,7 +29,7 @@ export default class MusicBox extends Component {
     return (
       <div className="music-box">
         <MusicHead />
-        <Player />
+        <Player musicItem={this.state.musicItem}/>
       </div>
     );
   }

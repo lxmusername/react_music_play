@@ -18,7 +18,7 @@ export default class MusicProgress extends Component {
         const curPro = Math.ceil(this.props.progress);
         return (
             <div className='music-progress' onClick={this.changeProgress} ref='progressBar'>
-                <div className='progress' style={{ width: `${progress}%`,background:this.props.bgColor }}></div>
+                <div className='progress' style={{ width: `${progress}%`,background:this.props.bgColor ,height:this.props.progressHeight}}></div>
             </div>
         );
     }
