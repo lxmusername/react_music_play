@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import MusicBox from '../components/page/MusicBox.js';
-ReactDOM.render(<MusicBox />, document.getElementById('root'));
+import Root from '../router/rooter.js';
+ReactDOM.render(<Root />, document.getElementById('root'));
