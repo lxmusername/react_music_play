@@ -3,6 +3,7 @@ import MusicProgress from './progress';
 import './player.css';
 import { MUSIC_LIST } from '../../assets/music/music-list';
 import {Link} from 'react-router-dom';
+import Pubsub from 'pubsub-js';
 
 
 
@@ -18,20 +19,22 @@ export default class Player extends Component {
             volume: 0,//音量 
             isPlay: true,//是否正在播放
             musicList: MUSIC_LIST,
-            musicItem: MUSIC_LIST[1],
+            musicItem: MUSIC_LIST[0],
         }
         this.play = this.play.bind(this);
-        console.log(this.props)
+    }
+    playMusic(item){
+        $('#player').jPlayer('setMedia',{
+            mp3:item.file
+        }).jPlayer('play');
+        this.setState({
+            musicItem: item
+        })
     }
     componentDidMount() {
-        let file = this.state.musicItem.file;
+        this.playMusic(this.state.musicItem);
         //初始化 jplayer插件
         $('#player').jPlayer({
-            ready: function () {
-                $(this).jPlayer('setMedia', {
-                    mp3: file
-                }).jPlayer('play');
-            },
             supplied: 'mp3',
             wmode: 'window'
         });
@@ -42,19 +45,23 @@ export default class Player extends Component {
                 volume: e.jPlayer.options.volume,
                 progress: e.jPlayer.status.currentTime
             });
+        });
+
+        Pubsub.subscribe('PLAY_MUSIC',(msg,item)=>{
+            console.log(msg)
+            console.log(item)
         })
     }
     componentWillUnmount() {
-        $('#player').unbind($.jPlayer.event.timeupdate)
+        $('#player').unbind($.jPlayer.event.timeupdate);
+        Pubsub.unsubscribe('PLAY_MUSIC');
     }
     //改变播放进度
     changeProgress(curProgress) {
-        console.log('play:', curProgress)
         $('#player').jPlayer('play', progressDuration * curProgress);
     }
     // 改变播放音量
     changeVolumn(curProgress) {
-        console.log('volume:', curProgress)
         $('#player').jPlayer('volume', curProgress);
     }
     // 是否播放
@@ -85,7 +92,7 @@ export default class Player extends Component {
                         </div>
                     </div>
                     <div className='music-logo'>
-                        <img src={this.state.musicItem.cover} />
+                        <img src={this.state.musicItem.cover} alt='logo'/>
                     </div>
                 </div>
                 <div className='player-progress'>
@@ -99,7 +106,7 @@ export default class Player extends Component {
                     <span></span>
                     <span className={this.state.isPlay ? 'pause-btn' : 'begin-btn'} onClick={this.play}></span>
                     <span></span>
-                    <img src={require('../../assets/images/round.png')} />
+                    <img src={require('../../assets/images/round.png')} alt='logo1'/>
                 </div>
             </div>
         );

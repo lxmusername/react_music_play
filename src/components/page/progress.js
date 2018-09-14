@@ -5,9 +5,6 @@ export default class MusicProgress extends Component {
         super(props)
         this.changeProgress = this.changeProgress.bind(this)
     }
-    componentDidMount() {
-
-    }
     changeProgress(e) {
         let progressBar = this.refs.progressBar;
         let curProgress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;
@@ -15,7 +12,6 @@ export default class MusicProgress extends Component {
     }
     render() {
         const progress = Math.ceil(this.props.progress / this.props.progressDuration * 100);
-        const curPro = Math.ceil(this.props.progress);
         return (
             <div className='music-progress' onClick={this.changeProgress} ref='progressBar'>
                 <div className='progress' style={{ width: `${progress}%`,background:this.props.bgColor ,height:this.props.progressHeight}}></div>

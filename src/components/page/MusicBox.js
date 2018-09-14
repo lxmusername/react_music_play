@@ -4,7 +4,7 @@ import { MUSIC_LIST } from '../../assets/music/music-list';
 
 
 const $ = window.$;
-export default class MusicBox extends Component {
+ class MusicBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,9 +28,12 @@ export default class MusicBox extends Component {
   render() {
     return (
       <div className='music-box'>
-        {React.cloneElement(this.props.children,this.state)}
+        {this.props.children}
       </div>
     );
   }
 }
+
+export default MusicBox;
+
 
